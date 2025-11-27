@@ -2,7 +2,10 @@ asgiref==3.11.0
 certifi==2017.4.17
 chardet==3.0.4
 charset-normalizer==2.0.12
+cloudinary==1.44.1
 colorama==0.3.9
+dj-database-url==3.0.1
+dj3-cloudinary-storage==0.0.6
 Django==5.2.8
 dnspython==1.15.0
 erlpack==1.0.1
@@ -12,6 +15,7 @@ gunicorn==23.0.0
 idna==2.5
 packaging==25.0
 psutil==7.1.0
+psycopg2==2.9.11
 PySide6==6.10.0
 PySide6_Addons==6.10.0
 PySide6_Essentials==6.10.0
@@ -22,5 +26,6 @@ shiboken6==6.10.0
 six==1.17.0
 sqlparse==0.5.3
 tzdata==2025.2
-urllib3==1.24.2
+urllib3==1.26.20
+whitenoise==6.11.0
 win_inet_pton==1.0.1
