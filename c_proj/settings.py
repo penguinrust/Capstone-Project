@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-xdd($w%_w&ozp6lu#btge3bo(oye(i6wec!r&z+s25gvtk8x@#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-nielmc-django-project-0kylrta3cs.us2.codeanyapp.com', '*.codeinstitute-ide.net', '*.herokuapp.com']
+ALLOWED_HOSTS = ['8000-nielmc-django-project-0kylrta3cs.us2.codeanyapp.com', 'capstoneproj-590563746108.herokuapp.com']
 CSRF_TRUSTED_ORIGINS = ['*.codeinstitute-ide.net', '*.herokuapp.com']
 
 
