@@ -10,7 +10,7 @@ class GamePostForm(forms.ModelForm):
     class Meta:
         model = GamePost
         fields = [
-            'title', 'game_name', 'category', 
+            'title', 'game_name', 'category',
             'featured_image', 'excerpt', 'content', 'status'
         ]
         widgets = {

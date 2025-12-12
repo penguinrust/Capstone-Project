@@ -1,7 +1,11 @@
 from django.shortcuts import redirect, get_object_or_404
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import (
+    LoginRequiredMixin, UserPassesTestMixin
+)
 from django.contrib import messages
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import (
+    ListView, DetailView, CreateView, UpdateView, DeleteView
+)
 from django.views import View
 from django.urls import reverse_lazy, reverse
 from django.db.models import Q
@@ -20,21 +24,21 @@ class PostListView(ListView):
 
     def get_queryset(self):
         queryset = GamePost.objects.filter(status=1)
-        
+
         # Search functionality
         query = self.request.GET.get('q')
         if query:
             queryset = queryset.filter(
-                Q(title__icontains=query) | 
+                Q(title__icontains=query) |
                 Q(game_name__icontains=query) |
                 Q(content__icontains=query)
             )
-        
+
         # Category filter
         category = self.request.GET.get('category')
         if category:
             queryset = queryset.filter(category=category)
-        
+
         return queryset
 
     def get_context_data(self, **kwargs):
@@ -61,7 +65,9 @@ class PostDetailView(DetailView):
         context['comments'] = post.comments.filter(approved=True)
         context['comment_form'] = CommentForm()
         if self.request.user.is_authenticated:
-            context['liked'] = post.likes.filter(id=self.request.user.id).exists()
+            context['liked'] = post.likes.filter(
+                id=self.request.user.id
+            ).exists()
         else:
             context['liked'] = False
         return context
@@ -71,10 +77,10 @@ class PostDetailView(DetailView):
         if not request.user.is_authenticated:
             messages.error(request, 'You must be logged in to comment.')
             return redirect('account_login')
-        
+
         post = self.get_object()
         comment_form = CommentForm(request.POST)
-        
+
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
             comment.post = post
@@ -82,7 +88,7 @@ class PostDetailView(DetailView):
             comment.save()
             messages.success(request, 'Comment added successfully!')
             return redirect('post_detail', slug=post.slug)
-        
+
         return self.get(request, *args, **kwargs)
 
 
@@ -93,15 +99,15 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     model = GamePost
     form_class = GamePostForm
     template_name = 'blog/post_form.html'
-    
+
     def form_valid(self, form):
         form.instance.author = self.request.user
         messages.success(self.request, 'Post created successfully!')
         return super().form_valid(form)
-    
+
     def get_success_url(self):
         return reverse('post_detail', kwargs={'slug': self.object.slug})
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['action'] = 'Create'
@@ -115,24 +121,24 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = GamePost
     form_class = GamePostForm
     template_name = 'blog/post_form.html'
-    
+
     def test_func(self):
         """Check if user is the author"""
         post = self.get_object()
         return self.request.user == post.author
-    
+
     def handle_no_permission(self):
         messages.error(self.request, 'You can only edit your own posts!')
         post = self.get_object()
         return redirect('post_detail', slug=post.slug)
-    
+
     def form_valid(self, form):
         messages.success(self.request, 'Post updated successfully!')
         return super().form_valid(form)
-    
+
     def get_success_url(self):
         return reverse('post_detail', kwargs={'slug': self.object.slug})
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['action'] = 'Edit'
@@ -146,17 +152,17 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = GamePost
     template_name = 'blog/post_confirm_delete.html'
     success_url = reverse_lazy('post_list')
-    
+
     def test_func(self):
         """Check if user is the author"""
         post = self.get_object()
         return self.request.user == post.author
-    
+
     def handle_no_permission(self):
         messages.error(self.request, 'You can only delete your own posts!')
         post = self.get_object()
         return redirect('post_detail', slug=post.slug)
-    
+
     def delete(self, request, *args, **kwargs):
         messages.success(request, 'Post deleted successfully!')
         return super().delete(request, *args, **kwargs)
@@ -168,14 +174,14 @@ class PostLikeView(LoginRequiredMixin, View):
     """
     def post(self, request, slug):
         post = get_object_or_404(GamePost, slug=slug)
-        
+
         if post.likes.filter(id=request.user.id).exists():
             post.likes.remove(request.user)
             messages.info(request, 'Post unliked!')
         else:
             post.likes.add(request.user)
             messages.success(request, 'Post liked!')
-        
+
         return redirect('post_detail', slug=slug)
 
 
@@ -186,6 +192,6 @@ class MyPostsView(LoginRequiredMixin, ListView):
     model = GamePost
     template_name = 'blog/my_posts.html'
     context_object_name = 'posts'
-    
+
     def get_queryset(self):
         return GamePost.objects.filter(author=self.request.user)
