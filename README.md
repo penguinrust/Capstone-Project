@@ -1,4 +1,4 @@
-# Gaming Community Hub
+# The Gaming Community Hub
 
 ![Screenshot of the community posts page](readme-images/hero-screenshot.png)
 
