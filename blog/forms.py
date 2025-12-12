@@ -25,6 +25,10 @@ class GamePostForm(forms.ModelForm):
             'category': forms.Select(attrs={
                 'class': 'form-control'
             }),
+            'featured_image': forms.FileInput(attrs={
+                'class': 'form-control',
+                'required': False  # ← Make it optional
+            }),
             'excerpt': forms.Textarea(attrs={
                 'class': 'form-control',
                 'rows': 3,
@@ -39,6 +43,11 @@ class GamePostForm(forms.ModelForm):
                 'class': 'form-control'
             }),
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Make featured_image not required
+        self.fields['featured_image'].required = False
 
     def save(self, commit=True):
         instance = super().save(commit=False)

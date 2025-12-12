@@ -1,7 +1,4 @@
 from django.contrib import admin
-
-# Register your models here.
-from django.contrib import admin
 from .models import GamePost, Comment
 
 
@@ -13,7 +10,7 @@ class GamePostAdmin(admin.ModelAdmin):
     list_display = ('title', 'game_name', 'author', 'category', 'status', 'created_on')
     list_filter = ('status', 'category', 'created_on')
     search_fields = ('title', 'game_name', 'content')
-    prepopulated_fields = {'slug': ('title',)}
+    prepopulated_fields = {'slug': ('title',)}  # ← This auto-generates slug from title
     date_hierarchy = 'created_on'
 
 

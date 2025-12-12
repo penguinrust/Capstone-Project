@@ -15,7 +15,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 # Security Settings
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-xdd($w%_w&ozp6lu#btge3bo(oye(i6wec!r&z+s25gvtk8x@#')
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '8000-nielmc-django-project-0kylrta3cs.us2.codeanyapp.com',

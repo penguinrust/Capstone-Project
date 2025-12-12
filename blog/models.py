@@ -34,7 +34,7 @@ class GamePost(models.Model):
     category = models.CharField(
         max_length=20, choices=CATEGORY_CHOICES, default='other'
     )
-    featured_image = CloudinaryField('image', default='placeholder')
+    featured_image = CloudinaryField('image', blank=True, null=True)  # ← Made optional
     content = models.TextField()
     excerpt = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)

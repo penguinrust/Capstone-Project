@@ -39,7 +39,7 @@
                     {% if post.featured_image %}
                         <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
                     {% else %}
-                        <img src="{% static 'images/placeholder.jpg' %}" class="card-img-top" alt="{{ post.title }}">
+                        <img src="{% static 'images/placeholder.png' %}" class="card-img-top" alt="{{ post.title }}">
                     {% endif %}
                     <div class="card-body">
                         <span class="badge bg-primary">{{ post.get_category_display }}</span>
