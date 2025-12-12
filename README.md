@@ -18,6 +18,7 @@ The application aims to make gaming content accessible, engaging, and community-
     - [Should Haves](#should-haves)
     - [Could Haves](#could-haves)
   - [Wireframes](#wireframes)
+  - [ERD](#erd)
   - [Colours](#colours)
   - [Font](#font)
 - [Key Features](#key-features)
@@ -191,13 +192,25 @@ As a user, I want to customize my profile with an avatar so that I can personali
 
 ### Wireframes
 
-The wireframes for The Gaming Community Hub were created using Balsamiq to visualize the user interface design and layout before development. These wireframes helped establish the information architecture, user flow, and responsive design considerations for both desktop and mobile experiences.
+The wireframes for Gaming Community Hub were created using Balsamiq to visualize the user interface design and layout before development. These wireframes helped establish the information architecture, user flow, and responsive design considerations for both desktop and mobile experiences.
 
 ![Desktop and mobile wireframes for the home page](readme-images/wireframe-home.png)
 
+### ERD
+
+The Entity Relationship Diagram (ERD) for Gaming Community Hub was created to provide a clear visual representation of the database structure and relationships. This diagram serves as a crucial design document that illustrates how data is organized and connected within the application.
+
+**Models:**
+- User (Django built-in)
+- Post (custom model)
+- Comment (custom model)
+- Like (custom model)
+
+![Entity Relationship Diagram for Gaming Community Hub](readme-images/erd.png)
+
 ### Colours
 
-The color scheme for The Gaming Community Hub was chosen to create a modern, gaming-focused aesthetic that is visually appealing while maintaining excellent readability.
+The color scheme for Gaming Community Hub was chosen to create a modern, gaming-focused aesthetic that is visually appealing while maintaining excellent readability.
 
 **Primary Colors:**
 - Background: #f8f9fa (Light gray)
@@ -223,7 +236,7 @@ The application uses system fonts for optimal performance and readability:
 
 ### User Authentication & Management
 
-The Gaming Community Hub provides comprehensive user authentication through Django Allauth, allowing users to register securely, log in with username and password combinations, and manage their sessions. Users receive clear feedback through Django messages for all authentication actions (login, logout, registration). The navigation bar dynamically updates to show the logged-in username and appropriate menu options.
+Gaming Community Hub provides comprehensive user authentication through Django Allauth, allowing users to register securely, log in with username and password combinations, and manage their sessions. Users receive clear feedback through Django messages for all authentication actions (login, logout, registration). The navigation bar dynamically updates to show the logged-in username and appropriate menu options.
 
 ### Post Management
 
@@ -270,7 +283,7 @@ All Must Have and Should Have features were successfully implemented. Could Have
 
 ## Deployment
 
-The Gaming Community Hub was deployed to Heroku using a systematic approach that ensures production-ready performance and security.
+Gaming Community Hub was deployed to Heroku using a systematic approach that ensures production-ready performance and security.
 
 ### Environment Configuration
 
@@ -447,7 +460,7 @@ During the Heroku deployment process, AI provided guidance on:
 
 ### AI Limitations
 
-Although AI was a powerful tool in the development of The Gaming Community Hub, its usage had some limitations:
+Although AI was a powerful tool in the development of Gaming Community Hub, its usage had some limitations:
 - Occasionally provided outdated information requiring verification
 - Sometimes suggested overly complex solutions for simple problems
 - Required careful review and testing of all suggested code
