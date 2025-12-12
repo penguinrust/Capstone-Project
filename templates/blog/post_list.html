@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Posts - Gaming Community Hub{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="mb-4">Gaming Posts</h1>
+    
+    <!-- Search and Filter -->
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <form method="get" class="d-flex">
+                <input type="text" name="q" class="form-control me-2" placeholder="Search posts..." value="{{ query }}">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <select class="form-select" onchange="location = this.value;">
+                <option value="{% url 'post_list' %}">All Categories</option>
+                <option value="?category=fps" {% if selected_category == 'fps' %}selected{% endif %}>FPS</option>
+                <option value="?category=rpg" {% if selected_category == 'rpg' %}selected{% endif %}>RPG</option>
+                <option value="?category=moba" {% if selected_category == 'moba' %}selected{% endif %}>MOBA</option>
+                <option value="?category=battle_royale" {% if selected_category == 'battle_royale' %}selected{% endif %}>Battle Royale</option>
+                <option value="?category=strategy" {% if selected_category == 'strategy' %}selected{% endif %}>Strategy</option>
+                <option value="?category=sports" {% if selected_category == 'sports' %}selected{% endif %}>Sports</option>
+                <option value="?category=racing" {% if selected_category == 'racing' %}selected{% endif %}>Racing</option>
+                <option value="?category=adventure" {% if selected_category == 'adventure' %}selected{% endif %}>Adventure</option>
+                <option value="?category=other" {% if selected_category == 'other' %}selected{% endif %}>Other</option>
+            </select>
+        </div>
+    </div>
+    
+    <!-- Posts Grid -->
+    <div class="row">
+        {% for post in page_obj %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    {% if post.featured_image %}
+                        <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
+                    {% else %}
+                        <img src="{% static 'images/placeholder.jpg' %}" class="card-img-top" alt="{{ post.title }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <span class="badge bg-primary">{{ post.get_category_display }}</span>
+                        <h5 class="card-title mt-2">{{ post.title }}</h5>
+                        <p class="card-text text-muted">{{ post.game_name }}</p>
+                        <p class="card-text">{{ post.excerpt|truncatewords:20 }}</p>
+                        <p class="text-muted small">
+                            <i class="fas fa-user"></i> {{ post.author.username }} | 
+                            <i class="fas fa-heart"></i> {{ post.number_of_likes }}
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'post_detail' post.slug %}" class="btn btn-sm btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12">
+                <p class="text-center">No posts found. <a href="{% url 'post_create' %}">Create the first one!</a></p>
+            </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Pagination -->
+    {% if page_obj.has_other_pages %}
+        <nav>
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">Previous</a>
+                    </li>
+                {% endif %}
+                
+                <li class="page-item active">
+                    <span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+                </li>
+                
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}">Next</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endif %}
+</div>
+{% endblock %}

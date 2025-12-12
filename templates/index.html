@@ -1,16 +1,44 @@
+{% extends 'base.html' %}
 {% load static %}
 
+{% block title %}Home - Gaming Community Hub{% endblock %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Django-Setup</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" >
-</head>
-<body>
-    <h1>Hello Django From Heroku</h1>
-    
-</body>
-</html>
+{% block content %}
+<!-- Hero Section -->
+<section class="hero bg-dark text-white text-center py-5">
+    <div class="container">
+        <h1 class="display-4">Welcome to Gaming Community Hub</h1>
+        <p class="lead">Share your gaming experiences, tips, and reviews</p>
+        {% if user.is_authenticated %}
+            <a href="{% url 'post_create' %}" class="btn btn-primary btn-lg">Create Post</a>
+            <a href="{% url 'post_list' %}" class="btn btn-outline-light btn-lg">Browse Posts</a>
+        {% else %}
+            <a href="{% url 'account_signup' %}" class="btn btn-primary btn-lg">Join Now</a>
+            <a href="{% url 'account_login' %}" class="btn btn-outline-light btn-lg">Login</a>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <i class="fas fa-gamepad fa-3x mb-3 text-primary"></i>
+                <h3>Share Reviews</h3>
+                <p>Write and share your honest game reviews with the community</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <i class="fas fa-users fa-3x mb-3 text-primary"></i>
+                <h3>Connect</h3>
+                <p>Engage with fellow gamers through comments and discussions</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <i class="fas fa-trophy fa-3x mb-3 text-primary"></i>
+                <h3>Discover</h3>
+                <p>Find new games and tips from experienced players</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
