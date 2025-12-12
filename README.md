@@ -477,13 +477,9 @@ Lighthouse tests were performed using Chrome Developer Tools to evaluate perform
 
 ![Desktop lighthouse report for the home page](readme-images/lighthouse-desktop-home.png)
 
-![Desktop lighthouse report for the community posts page](readme-images/lighthouse-desktop-posts.png)
-
 ### Mobile Lighthouse Reports
 
 ![Mobile lighthouse report for the home page](readme-images/lighthouse-mobile-home.png)
-
-![Mobile lighthouse report for the community posts page](readme-images/lighthouse-mobile-posts.png)
 
 **Performance Notes:**
 - Performance scores were affected by image loading from Cloudinary
