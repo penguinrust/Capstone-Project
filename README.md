@@ -196,18 +196,6 @@ The wireframes for Gaming Community Hub were created using Balsamiq to visualize
 
 ![Desktop and mobile wireframes for the home page](readme-images/wireframe-home.png)
 
-### ERD
-
-The Entity Relationship Diagram (ERD) for Gaming Community Hub was created to provide a clear visual representation of the database structure and relationships. This diagram serves as a crucial design document that illustrates how data is organized and connected within the application.
-
-**Models:**
-- User (Django built-in)
-- Post (custom model)
-- Comment (custom model)
-- Like (custom model)
-
-![Entity Relationship Diagram for Gaming Community Hub](readme-images/erd.png)
-
 ### Colours
 
 The color scheme for Gaming Community Hub was chosen to create a modern, gaming-focused aesthetic that is visually appealing while maintaining excellent readability.
@@ -216,7 +204,7 @@ The color scheme for Gaming Community Hub was chosen to create a modern, gaming-
 - Background: #f8f9fa (Light gray)
 - Navigation: #212529 (Dark gray/black)
 - Primary Accent: #007bff (Blue)
-- Success: #28a745 (Green)
+- Success: #674c8c (Purple)
 - Danger: #dc3545 (Red)
 
 ![Color palette used for the gaming hub](readme-images/colors.png)
@@ -491,19 +479,11 @@ Lighthouse tests were performed using Chrome Developer Tools to evaluate perform
 
 ![Desktop lighthouse report for the community posts page](readme-images/lighthouse-desktop-posts.png)
 
-![Desktop lighthouse report for the create post page](readme-images/lighthouse-desktop-create.png)
-
-![Desktop lighthouse report for the post detail page](readme-images/lighthouse-desktop-detail.png)
-
 ### Mobile Lighthouse Reports
 
 ![Mobile lighthouse report for the home page](readme-images/lighthouse-mobile-home.png)
 
 ![Mobile lighthouse report for the community posts page](readme-images/lighthouse-mobile-posts.png)
-
-![Mobile lighthouse report for the create post page](readme-images/lighthouse-mobile-create.png)
-
-![Mobile lighthouse report for the post detail page](readme-images/lighthouse-mobile-detail.png)
 
 **Performance Notes:**
 - Performance scores were affected by image loading from Cloudinary
@@ -636,7 +616,6 @@ The following features are planned for future development:
 - Cloudinary documentation for image hosting setup
 
 ### Media
-- Placeholder images from [placeholder.com](https://placeholder.com)
 - Icons from [Font Awesome](https://fontawesome.com)
 - Featured images uploaded by users via Cloudinary
 

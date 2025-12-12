@@ -198,6 +198,7 @@ class MyPostsView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return GamePost.objects.filter(author=self.request.user)
 
+
 class MyPostsView(LoginRequiredMixin, ListView):
     """
     Display user's own posts
@@ -216,7 +217,7 @@ def delete_comment(request, comment_id):
     Delete a comment - only by staff or comment author
     """
     comment = get_object_or_404(Comment, id=comment_id)
-    
+
     # Check if user is staff/admin or comment owner
     if request.user.is_staff or comment.author == request.user:
         post_slug = comment.post.slug
@@ -224,5 +225,8 @@ def delete_comment(request, comment_id):
         messages.success(request, 'Comment deleted successfully!')
         return redirect('post_detail', slug=post_slug)
     else:
-        messages.error(request, "You don't have permission to delete this comment.")
+        messages.error(
+            request,
+            "You don't have permission to delete this comment."
+        )
         return redirect('post_detail', slug=comment.post.slug)
