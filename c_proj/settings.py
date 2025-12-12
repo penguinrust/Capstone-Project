@@ -1,7 +1,7 @@
 """
 Django settings for c_proj project.
 
-This module contains all configuration settings for the Gaming Community Hub
+This module contains all configuration settings for The Gaming Community Hub
 Django application, including database, static files, authentication, and
 third-party integrations.
 """

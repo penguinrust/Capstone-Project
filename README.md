@@ -45,7 +45,7 @@ The application aims to make gaming content accessible, engaging, and community-
 
 ### User Stories
 
-The user stories for Gaming Community Hub have been carefully crafted to ensure the development process remains user-centered and focused on delivering real value to gamers seeking to share and discover gaming content. These stories serve as the foundation for feature development, testing criteria, and project prioritization.
+The user stories for The Gaming Community Hub have been carefully crafted to ensure the development process remains user-centered and focused on delivering real value to gamers seeking to share and discover gaming content. These stories serve as the foundation for feature development, testing criteria, and project prioritization.
 
 Each user story follows the standard Agile format: "As a [type of user], I want [some goal] so that [some reason]." The user stories are organized using the MoSCoW method to guide development priorities.
 
@@ -192,13 +192,13 @@ As a user, I want to customize my profile with an avatar so that I can personali
 
 ### Wireframes
 
-The wireframes for Gaming Community Hub were created using Balsamiq to visualize the user interface design and layout before development. These wireframes helped establish the information architecture, user flow, and responsive design considerations for both desktop and mobile experiences.
+The wireframes for The Gaming Community Hub were created using Balsamiq to visualize the user interface design and layout before development. These wireframes helped establish the information architecture, user flow, and responsive design considerations for both desktop and mobile experiences.
 
 ![Desktop and mobile wireframes for the home page](readme-images/wireframe-home.png)
 
 ### Colours
 
-The color scheme for Gaming Community Hub was chosen to create a modern, gaming-focused aesthetic that is visually appealing while maintaining excellent readability.
+The color scheme for The Gaming Community Hub was chosen to create a modern, gaming-focused aesthetic that is visually appealing while maintaining excellent readability.
 
 **Primary Colors:**
 - Background: #f8f9fa (Light gray)
@@ -224,7 +224,7 @@ The application uses system fonts for optimal performance and readability:
 
 ### User Authentication & Management
 
-Gaming Community Hub provides comprehensive user authentication through Django Allauth, allowing users to register securely, log in with username and password combinations, and manage their sessions. Users receive clear feedback through Django messages for all authentication actions (login, logout, registration). The navigation bar dynamically updates to show the logged-in username and appropriate menu options.
+The Gaming Community Hub provides comprehensive user authentication through Django Allauth, allowing users to register securely, log in with username and password combinations, and manage their sessions. Users receive clear feedback through Django messages for all authentication actions (login, logout, registration). The navigation bar dynamically updates to show the logged-in username and appropriate menu options.
 
 ### Post Management
 
@@ -271,7 +271,7 @@ All Must Have and Should Have features were successfully implemented. Could Have
 
 ## Deployment
 
-Gaming Community Hub was deployed to Heroku using a systematic approach that ensures production-ready performance and security.
+The Gaming Community Hub was deployed to Heroku using a systematic approach that ensures production-ready performance and security.
 
 ### Environment Configuration
 
@@ -448,7 +448,7 @@ During the Heroku deployment process, AI provided guidance on:
 
 ### AI Limitations
 
-Although AI was a powerful tool in the development of Gaming Community Hub, its usage had some limitations:
+Although AI was a powerful tool in the development of The Gaming Community Hub, its usage had some limitations:
 - Occasionally provided outdated information requiring verification
 - Sometimes suggested overly complex solutions for simple problems
 - Required careful review and testing of all suggested code
