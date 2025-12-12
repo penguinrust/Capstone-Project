@@ -22,7 +22,7 @@ SECRET_KEY = os.environ.get(
     'SECRET_KEY',
     'django-insecure-xdd($w%_w&ozp6lu#btge3bo(oye(i6wec!r&z+s25gvtk8x@#'
 )
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = True
 
 
 ALLOWED_HOSTS = [
@@ -60,8 +60,8 @@ INSTALLED_APPS = [
     'cloudinary',
 
     # Local apps
-    'blog',
-    'home',
+    'community',
+    'home'
 ]
 
 
@@ -80,6 +80,11 @@ ACCOUNT_SIGNUP_FIELDS = ['username*', 'password1*', 'password2*']
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    'API_KEY': os.environ.get("CLOUDINARY_API_KEY"),
+    'API_SECRET': os.environ.get("CLOUDINARY_API_SECRET")
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

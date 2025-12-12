@@ -18,7 +18,7 @@ class PostListView(ListView):
     Display list of all published game posts
     """
     model = GamePost
-    template_name = 'blog/post_list.html'
+    template_name = 'community/post_list.html'
     context_object_name = 'posts'
     paginate_by = 9
 
@@ -53,7 +53,7 @@ class PostDetailView(DetailView):
     Display a single post with comments
     """
     model = GamePost
-    template_name = 'blog/post_detail.html'
+    template_name = 'community/post_detail.html'
     context_object_name = 'post'
 
     def get_queryset(self):
@@ -98,7 +98,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     """
     model = GamePost
     form_class = GamePostForm
-    template_name = 'blog/post_form.html'
+    template_name = 'community/post_form.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -120,7 +120,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """
     model = GamePost
     form_class = GamePostForm
-    template_name = 'blog/post_form.html'
+    template_name = 'community/post_form.html'
 
     def test_func(self):
         """Check if user is the author"""
@@ -150,7 +150,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     Delete a game post
     """
     model = GamePost
-    template_name = 'blog/post_confirm_delete.html'
+    template_name = 'community/post_confirm_delete.html'
     success_url = reverse_lazy('post_list')
 
     def test_func(self):
@@ -190,7 +190,7 @@ class MyPostsView(LoginRequiredMixin, ListView):
     Display user's own posts
     """
     model = GamePost
-    template_name = 'blog/my_posts.html'
+    template_name = 'community/my_posts.html'
     context_object_name = 'posts'
 
     def get_queryset(self):

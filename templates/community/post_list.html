@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Gaming Posts - Gaming Community Hub{% endblock %}
 
@@ -43,7 +44,7 @@
                          class="card-img-top" 
                          alt="Featured image for {{ post.title }} - {{ post.game_name }}">
                 {% else %}
-                    <img src="https://via.placeholder.com/400x200?text=No+Image" 
+                    <img src="{% static 'images/placeholder.png' %}" 
                          class="card-img-top" 
                          alt="Placeholder image for {{ post.title }}">
                 {% endif %}
