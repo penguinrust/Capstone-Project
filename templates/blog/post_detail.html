@@ -20,8 +20,11 @@
             
             <!-- Featured Image -->
             {% if post.featured_image %}
-                <img src="{{ post.featured_image.url }}" class="img-fluid rounded mb-4" alt="{{ post.title }}">
+                <img src="{{ post.featured_image.url }}" 
+                    class="img-fluid rounded mb-4" 
+                    alt="Featured image for {{ post.title }} about {{ post.game_name }}">
             {% endif %}
+
             
             <!-- Post Content -->
             <div class="post-content mb-4">

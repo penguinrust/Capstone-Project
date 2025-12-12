@@ -66,3 +66,71 @@ footer a:hover {
         height: 150px;
     }
 }
+
+/* Theme toggle button styling */
+#themeToggle {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#themeToggle:hover {
+    transform: rotate(20deg) scale(1.1);
+}
+
+#themeToggle:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#themeIcon {
+    transition: all 0.3s ease;
+}
+
+/* Existing dark mode styles */
+[data-bs-theme="dark"] {
+    --bs-body-bg: #1a1a1a;
+    --bs-body-color: #e0e0e0;
+}
+
+[data-bs-theme="dark"] .card {
+    background-color: #2d2d2d;
+    border-color: #404040;
+}
+
+[data-bs-theme="dark"] .card-body {
+    color: #e0e0e0;
+}
+
+[data-bs-theme="dark"] .btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+[data-bs-theme="dark"] .form-control,
+[data-bs-theme="dark"] .form-select {
+    background-color: #2d2d2d;
+    border-color: #404040;
+    color: #e0e0e0;
+}
+
+[data-bs-theme="dark"] .form-control:focus,
+[data-bs-theme="dark"] .form-select:focus {
+    background-color: #2d2d2d;
+    border-color: #0d6efd;
+    color: #e0e0e0;
+}
+
+/* Dark mode toggle styling */
+#darkModeSwitch {
+    cursor: pointer;
+    width: 3rem;
+    height: 1.5rem;
+}
+
+#darkModeSwitch:checked {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
