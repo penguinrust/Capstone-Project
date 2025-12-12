@@ -3,7 +3,7 @@
 ![Screenshot of the community posts page](readme-images/hero-screenshot.png)
 
 ## Overview
-Gaming Community Hub is a Django-powered web application designed to help gamers share their gaming experiences, tips, and reviews with a vibrant online community. The back-end is Python-based using Django, and the front-end incorporates HTML, CSS, JavaScript, and Bootstrap 5.
+The Gaming Community Hub is a Django-powered web application designed to help gamers share their gaming experiences, tips, and reviews with a vibrant online community. The back-end is Python-based using Django, and the front-end incorporates HTML, CSS, JavaScript, and Bootstrap 5.
 
 The platform provides a secure space for users to create, view, edit, and delete their gaming posts. Users can engage with content through comments and likes, building a supportive gaming community where players can discover new games, share strategies, and connect with fellow gamers.
 
