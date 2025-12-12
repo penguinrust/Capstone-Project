@@ -1,5 +1,9 @@
 """
 Django settings for c_proj project.
+
+This module contains all configuration settings for the Gaming Community Hub
+Django application, including database, static files, authentication, and
+third-party integrations.
 """
 
 from pathlib import Path
@@ -8,11 +12,12 @@ import dj_database_url
 from django.contrib.messages import constants as messages
 
 
+# Load environment variables from env.py if it exists (local development)
 if os.path.isfile("env.py"):
     import env
 
 
-# Build paths
+# Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
@@ -22,9 +27,12 @@ SECRET_KEY = os.environ.get(
     'SECRET_KEY',
     'django-insecure-xdd($w%_w&ozp6lu#btge3bo(oye(i6wec!r&z+s25gvtk8x@#'
 )
+
+# DEBUG should be False in production, True only in development
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 
+# Allowed hosts for the application
 ALLOWED_HOSTS = [
     '8000-nielmc-django-project-0kylrta3cs.us2.codeanyapp.com',
     'capstoneproj-590563746108.herokuapp.com',
@@ -33,6 +41,7 @@ ALLOWED_HOSTS = [
 ]
 
 
+# CSRF trusted origins for secure form submissions
 CSRF_TRUSTED_ORIGINS = [
     'https://*.codeinstitute-ide.net',
     'https://*.herokuapp.com',
@@ -42,6 +51,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 # Application definition
 INSTALLED_APPS = [
+    # Django core apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,58 +60,64 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-    # Third party
-    'allauth',
+    # Third party apps
+    'allauth',  # Authentication
     'allauth.account',
     'allauth.socialaccount',
-    'crispy_forms',
+    'crispy_forms',  # Form styling
     'crispy_bootstrap5',
-    'cloudinary_storage',
+    'cloudinary_storage',  # Media file storage
     'cloudinary',
 
     # Local apps
-    'community',
-    'home'
+    'community',  # Gaming community posts and comments
+    'home'  # Home page and landing
 ]
 
 
+# Required for django-allauth
 SITE_ID = 1
 
 
-# Crispy Forms
+# Crispy Forms configuration for Bootstrap 5 styling
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
-# Allauth settings (Updated for newer version)
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-ACCOUNT_LOGIN_METHODS = {'username'}
+# Django-allauth authentication settings
+ACCOUNT_EMAIL_VERIFICATION = 'none'  # No email verification required
+ACCOUNT_LOGIN_METHODS = {'username'}  # Login with username only
 ACCOUNT_SIGNUP_FIELDS = ['username*', 'password1*', 'password2*']
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'  # Redirect to home after login
+LOGOUT_REDIRECT_URL = '/'  # Redirect to home after logout
 
+
+# Cloudinary configuration for media file storage
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.environ.get("CLOUDINARY_CLOUD_NAME"),
     'API_KEY': os.environ.get("CLOUDINARY_API_KEY"),
     'API_SECRET': os.environ.get("CLOUDINARY_API_SECRET")
 }
 
+
+# Middleware configuration
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Serve static files
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
+    'allauth.account.middleware.AccountMiddleware',  # Required for allauth
 ]
 
 
 ROOT_URLCONF = 'c_proj.urls'
 
 
+# Template configuration
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -122,7 +138,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'c_proj.wsgi.application'
 
 
-# Database
+# Database configuration
+# Uses PostgreSQL in production (Heroku), SQLite in local development
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
@@ -177,16 +194,16 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-
-# For development - serve static files
+# WhiteNoise storage backend for serving static files in production
 STATICFILES_STORAGE = (
     'whitenoise.storage.CompressedManifestStaticFilesStorage'
 )
 
 
-# Media files
+# Media files configuration
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# Use Cloudinary for media file storage
 DEFAULT_FILE_STORAGE = (
     'cloudinary_storage.storage.MediaCloudinaryStorage'
 )
@@ -196,7 +213,7 @@ DEFAULT_FILE_STORAGE = (
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# Messages
+# Bootstrap alert styling for Django messages
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
     messages.INFO: 'alert-info',
