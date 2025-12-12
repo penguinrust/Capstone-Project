@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
     path(
         '',
@@ -35,5 +36,11 @@ urlpatterns = [
         'my-posts/',
         views.MyPostsView.as_view(),
         name='my_posts'
+    ),
+    # Add this new URL for deleting comments
+    path(
+        'comment/delete/<int:comment_id>/',
+        views.delete_comment,
+        name='delete_comment'
     ),
 ]
